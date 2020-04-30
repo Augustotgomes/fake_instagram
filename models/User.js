@@ -15,12 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       timestamps: false,
+      freezeTableName:true,
+      tableName: "users",
     }
   );
 
   User.associate = (models) => {
     User.hasMany(models.Publication, {
       foreignKey: "users_id",
+      as: "user"
     });
   };
 
